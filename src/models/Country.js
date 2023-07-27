@@ -18,6 +18,7 @@ const Country = sequelize.define('country', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    //continentId
 });
 
 module.exports = Country;
