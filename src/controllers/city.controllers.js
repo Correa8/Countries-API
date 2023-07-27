@@ -1,5 +1,6 @@
 const catchError = require('../utils/catchError');
 const City = require('../models/City');
+const Country = require('../models/Country');
 
 const getAll = catchError(async(req, res) => {
     const results = await City.findAll({ include : [Country]});
@@ -13,7 +14,7 @@ const create = catchError(async(req, res) => {
 
 const getOne = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await City.findByPk(id);
+    const result = await City.findByPk(id, { include : [Country]});
     if(!result) return res.sendStatus(400);
     return res.json(result);
 });
